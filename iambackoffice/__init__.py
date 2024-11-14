@@ -15,7 +15,7 @@
 """  # noqa: E501
 
 
-__version__ = "1.2.0"
+__version__ = "1.7.0"
 
 # import apis into sdk package
 from iambackoffice.api.iam_backoffice_api import IamBackofficeApi
