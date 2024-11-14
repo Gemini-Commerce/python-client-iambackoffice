@@ -28,8 +28,6 @@ AUTHZ
 
 
 ```python
-import time
-import os
 import iambackoffice
 from iambackoffice.models.iambackoffice_assign_roles_request import IambackofficeAssignRolesRequest
 from iambackoffice.models.iambackoffice_assign_roles_response import IambackofficeAssignRolesResponse
@@ -98,8 +96,6 @@ No authorization required
 
 
 ```python
-import time
-import os
 import iambackoffice
 from iambackoffice.models.iambackoffice_assign_user_to_group_request import IambackofficeAssignUserToGroupRequest
 from iambackoffice.rest import ApiException
@@ -166,8 +162,6 @@ GROUPS
 
 
 ```python
-import time
-import os
 import iambackoffice
 from iambackoffice.models.iambackoffice_create_group_request import IambackofficeCreateGroupRequest
 from iambackoffice.models.iambackoffice_create_group_response import IambackofficeCreateGroupResponse
@@ -236,8 +230,6 @@ No authorization required
 
 
 ```python
-import time
-import os
 import iambackoffice
 from iambackoffice.models.iambackoffice_disable_user_mfa_request import IambackofficeDisableUserMfaRequest
 from iambackoffice.models.iambackoffice_user_mfa_response import IambackofficeUserMfaResponse
@@ -305,8 +297,6 @@ No authorization required
 
 
 ```python
-import time
-import os
 import iambackoffice
 from iambackoffice.models.iambackoffice_enable_user_mfa_request import IambackofficeEnableUserMfaRequest
 from iambackoffice.models.iambackoffice_user_mfa_response import IambackofficeUserMfaResponse
@@ -374,8 +364,6 @@ MFA
 
 
 ```python
-import time
-import os
 import iambackoffice
 from iambackoffice.models.iambackoffice_generate_secret_for_qr_response import IambackofficeGenerateSecretForQRResponse
 from iambackoffice.rest import ApiException
@@ -443,8 +431,6 @@ USER
 
 
 ```python
-import time
-import os
 import iambackoffice
 from iambackoffice.models.iambackoffice_get_user_request import IambackofficeGetUserRequest
 from iambackoffice.models.iambackoffice_get_user_response import IambackofficeGetUserResponse
@@ -513,8 +499,6 @@ LOGIN
 
 
 ```python
-import time
-import os
 import iambackoffice
 from iambackoffice.models.iambackoffice_login_request import IambackofficeLoginRequest
 from iambackoffice.models.iambackoffice_login_response import IambackofficeLoginResponse
@@ -583,8 +567,6 @@ LOGIN MFA
 
 
 ```python
-import time
-import os
 import iambackoffice
 from iambackoffice.models.iambackoffice_login_mfa_request import IambackofficeLoginMfaRequest
 from iambackoffice.models.iambackoffice_login_response import IambackofficeLoginResponse
@@ -653,8 +635,6 @@ No authorization required
 
 
 ```python
-import time
-import os
 import iambackoffice
 from iambackoffice.models.iambackoffice_logout_request import IambackofficeLogoutRequest
 from iambackoffice.models.iambackoffice_logout_response import IambackofficeLogoutResponse
@@ -722,8 +702,6 @@ REGISTRATION
 
 
 ```python
-import time
-import os
 import iambackoffice
 from iambackoffice.models.iambackoffice_registration_request import IambackofficeRegistrationRequest
 from iambackoffice.models.iambackoffice_registration_response import IambackofficeRegistrationResponse
@@ -792,8 +770,6 @@ No authorization required
 
 
 ```python
-import time
-import os
 import iambackoffice
 from iambackoffice.models.iambackoffice_search_groups_request import IambackofficeSearchGroupsRequest
 from iambackoffice.models.iambackoffice_search_groups_response import IambackofficeSearchGroupsResponse
@@ -861,8 +837,6 @@ No authorization required
 
 
 ```python
-import time
-import os
 import iambackoffice
 from iambackoffice.models.iambackoffice_unassign_roles_request import IambackofficeUnassignRolesRequest
 from iambackoffice.models.iambackoffice_unassign_roles_response import IambackofficeUnassignRolesResponse

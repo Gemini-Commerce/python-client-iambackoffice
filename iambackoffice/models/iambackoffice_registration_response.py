@@ -18,16 +18,13 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel
 from iambackoffice.models.iambackoffice_user import IambackofficeUser
 from iambackoffice.models.iambackoffice_user_registration import IambackofficeUserRegistration
 from iambackoffice.models.protobuf_any import ProtobufAny
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class IambackofficeRegistrationResponse(BaseModel):
     """
@@ -36,13 +33,14 @@ class IambackofficeRegistrationResponse(BaseModel):
     tokens: Optional[ProtobufAny] = None
     registration: Optional[IambackofficeUserRegistration] = None
     user: Optional[IambackofficeUser] = None
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["tokens", "registration", "user"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -55,7 +53,7 @@ class IambackofficeRegistrationResponse(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of IambackofficeRegistrationResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -68,11 +66,15 @@ class IambackofficeRegistrationResponse(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
+        excluded_fields: Set[str] = set([
+            "additional_properties",
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of tokens
@@ -84,10 +86,15 @@ class IambackofficeRegistrationResponse(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of user
         if self.user:
             _dict['user'] = self.user.to_dict()
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of IambackofficeRegistrationResponse from a dict"""
         if obj is None:
             return None
@@ -96,10 +103,15 @@ class IambackofficeRegistrationResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "tokens": ProtobufAny.from_dict(obj.get("tokens")) if obj.get("tokens") is not None else None,
-            "registration": IambackofficeUserRegistration.from_dict(obj.get("registration")) if obj.get("registration") is not None else None,
-            "user": IambackofficeUser.from_dict(obj.get("user")) if obj.get("user") is not None else None
+            "tokens": ProtobufAny.from_dict(obj["tokens"]) if obj.get("tokens") is not None else None,
+            "registration": IambackofficeUserRegistration.from_dict(obj["registration"]) if obj.get("registration") is not None else None,
+            "user": IambackofficeUser.from_dict(obj["user"]) if obj.get("user") is not None else None
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 
